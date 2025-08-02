@@ -3717,7 +3717,7 @@ enum nk_edit_flags {
 };
 enum nk_edit_types {
     NK_EDIT_SIMPLE  = NK_EDIT_ALWAYS_INSERT_MODE,
-    NK_EDIT_FIELD   = NK_EDIT_SIMPLE|NK_EDIT_SELECTABLE|NK_EDIT_CLIPBOARD,
+    NK_EDIT_FIELD   = (unsigned)NK_EDIT_SIMPLE|(unsigned)NK_EDIT_SELECTABLE|(unsigned)NK_EDIT_CLIPBOARD,
     NK_EDIT_BOX     = NK_EDIT_ALWAYS_INSERT_MODE| NK_EDIT_SELECTABLE| NK_EDIT_MULTILINE|NK_EDIT_ALLOW_TAB|NK_EDIT_CLIPBOARD,
     NK_EDIT_EDITOR  = NK_EDIT_SELECTABLE|NK_EDIT_MULTILINE|NK_EDIT_ALLOW_TAB| NK_EDIT_CLIPBOARD
 };
@@ -5620,8 +5620,8 @@ enum nk_panel_type {
 };
 enum nk_panel_set {
     NK_PANEL_SET_NONBLOCK = NK_PANEL_CONTEXTUAL|NK_PANEL_COMBO|NK_PANEL_MENU|NK_PANEL_TOOLTIP,
-    NK_PANEL_SET_POPUP = NK_PANEL_SET_NONBLOCK|NK_PANEL_POPUP,
-    NK_PANEL_SET_SUB = NK_PANEL_SET_POPUP|NK_PANEL_GROUP
+    NK_PANEL_SET_POPUP = (unsigned)NK_PANEL_SET_NONBLOCK|(unsigned)NK_PANEL_POPUP,
+    NK_PANEL_SET_SUB = (unsigned)NK_PANEL_SET_POPUP|(unsigned)NK_PANEL_GROUP
 };
 
 struct nk_chart_slot {
@@ -5713,7 +5713,7 @@ enum nk_window_flags {
     NK_WINDOW_PRIVATE       = NK_FLAG(11),
     NK_WINDOW_DYNAMIC       = NK_WINDOW_PRIVATE,                  /**< special window type growing up in height while being filled to a certain maximum height */
     NK_WINDOW_ROM           = NK_FLAG(12),                        /**< sets window widgets into a read only mode and does not allow input changes */
-    NK_WINDOW_NOT_INTERACTIVE = NK_WINDOW_ROM|NK_WINDOW_NO_INPUT, /**< prevents all interaction caused by input to either window or widgets inside */
+    NK_WINDOW_NOT_INTERACTIVE = (unsigned)NK_WINDOW_ROM|(unsigned)NK_WINDOW_NO_INPUT, /**< prevents all interaction caused by input to either window or widgets inside */
     NK_WINDOW_HIDDEN        = NK_FLAG(13),                        /**< Hides window and stops any window interaction and drawing */
     NK_WINDOW_CLOSED        = NK_FLAG(14),                        /**< Directly closes and frees the window at the end of the frame */
     NK_WINDOW_MINIMIZED     = NK_FLAG(15),                        /**< marks the window as minimized */
